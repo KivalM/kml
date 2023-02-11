@@ -14,12 +14,10 @@ content:
     p:
         link:https://www.youtube.com/watch?v=dQw4w9WgXcQ
             Click here to be redirected to a Rick Roll!
-        
-        This is just some plain text.
-
         link:https://www.youtube.com/watch?v=dQw4w9WgXcQ
             Click here to be redirected to a Rick Roll!
-
+        
+        This is just some plain text
     p:
         link:https://www.youtube.com/watch?v=dQw4w9WgXcQ
             Click here to be redirected to a Ricky Rollercoaster!
