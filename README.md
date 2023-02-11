@@ -1,4 +1,4 @@
-# KML - the (o)K(ay) Markup Language
+# KML - the (O)K Markup Language
 
 KML is a markup language for defining blog posts. It is designed to be easy to read and write, and to be easy to parse. It is also designed to be easy to convert to other formats, such as HTML for the web, or Markdown for other blogs.
 
