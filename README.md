@@ -55,25 +55,53 @@ date:
     10 February 2023 @ 12PM
 
 description:
-    Welcome to my blog!
+    This is a basic hello world blog post.
 
 content:
     p:
-        Hi. Welcome to my blog! I hope you enjoy it!
+        This is a paragraph of text.
+        This is line 2 of the paragraph.
+        I need to add line break support.
     p:
-        This is a link to a Rick Roll.
-        A text link is defined like this
-
         link:https://www.youtube.com/watch?v=dQw4w9WgXcQ
-            Click here to be redirected to a Rick Roll!
+            Click here for more information!
+            This is a second line of text inside the link.
         
-        This is just some plain text below the link.
-
+        This is just some plain text outside the link, but in the same paragraph. 
     p:
-        This is an image with a caption.
+        img:https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?cs=srgb&dl=pexels-pixabay-45201.jpg&fm=jpg&h=150&w=150&fit=crop
+            This is an image of a cat.
 
-        image:https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg
-            This is an image of a Rick Roll.
-
-        This is just some plain text below the image.
 ```
+generates the following HTML:
+```
+<div id='document'>
+    <h1 id='title'>Hello World!</h1>
+    <h2 id='date'>10 February 2023 @ 12PM</h2>
+    <p id='description'>This is a basic hello world blog post.</p>
+    <div id='content'>
+        <p id='paragraph'>This is a paragraph of text. This is line 2 of the paragraph. I need to add line break
+            support.</p>
+        <p id='paragraph'><a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>Click here for more information! This is
+                a second line of text inside the link.</a>This is just some plain text outside the link, but in the same
+            paragraph.</p>
+        <p id='paragraph'>
+        <figure><img
+                src='https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?cs=srgb&dl=pexels-pixabay-45201.jpg&fm=jpg&h=150&w=150&fit=crop'>
+            <figcaption>This is an image of a cat.</figcaption>
+        </figure>
+        </p>
+    </div>
+</div>
+```
+and also displays like this in markdown:
+# Hello World! #
+## 10 February 2023 @ 12PM ##
+### This is a basic hello world blog post. ###
+This is a paragraph of text. This is line 2 of the paragraph. I need to add line break support.
+
+[Click here for more information! This is a second line of text inside the link.](https://www.youtube.com/watch?v=dQw4w9WgXcQ)This is just some plain text outside the link, but in the same paragraph.
+
+| ![](https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?cs=srgb&dl=pexels-pixabay-45201.jpg&fm=jpg&h=150&w=150&fit=crop) |
+|:--:|
+| *This is an image of a cat.* |

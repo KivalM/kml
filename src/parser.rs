@@ -130,20 +130,16 @@ pub fn parse(tokens: Vec<Token>) -> Result<Node, String> {
                 nodes.push(ContentNode::Link(url.to_string(), link_nodes));
             }
             Token::Image(url) => {
-                // if we encounter an image token, we want to extract the caption from the next token
-                index += 1;
-                let caption_token = &tokens[index];
-
-                match caption_token {
-                    Token::Text(caption) => {
-                        nodes.push(ContentNode::Image(url.to_string(), caption.to_string()));
-                    }
-                    _ => {
-                        panic!(
-                            "Expected text token after image token but got {:?}",
-                            caption_token
-                        );
-                    }
+                // if we encounter a link token, we want to recurse into the link level
+                let mut link_nodes = Vec::new();
+                index = recurse_content_level(index + 1, 1, tokens, &mut link_nodes);
+                if let Some(ContentNode::Text(text)) = link_nodes.first() {
+                    nodes.push(ContentNode::Image(url.to_string(), text.to_string()));
+                } else {
+                    panic!(
+                        "Expected a single text node after image token but got {:?}",
+                        link_nodes
+                    );
                 }
             }
 
@@ -207,7 +203,7 @@ mod tests {
 
     #[test]
     fn test() {
-        let input = include_str!("../examples/hello.kml");
+        let input = include_str!("../examples/hello_world/hello_world.kml");
         let tokens = lex(input);
         let nodes = parse(tokens).unwrap();
         println!("{:#?}", nodes);

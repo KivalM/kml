@@ -106,7 +106,7 @@ pub fn tokenize_line(token: &str) -> Token {
         "content:" => Token::Content,
         "p:" => Token::Paragraph,
         _ if token.starts_with("link:") => Token::Link(token[5..].trim().to_string()),
-        _ if token.starts_with("image:") => Token::Image(token[6..].trim().to_string()),
+        _ if token.starts_with("img:") => Token::Image(token[4..].trim().to_string()),
         txt => Token::Text(txt.trim().to_string()),
     }
 }
@@ -136,7 +136,7 @@ mod tests {
 
     #[test]
     fn test_tokenize() {
-        let input = include_str!("../examples/hello.kml");
+        let input = include_str!("../examples/hello_world/hello_world.kml");
         let tokens = lex(input);
         println!("Tokens: {:#?}", tokens);
         print_tokens(tokens);
