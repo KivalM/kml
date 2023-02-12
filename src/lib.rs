@@ -7,14 +7,14 @@ pub mod lexer;
 pub mod nodes;
 pub mod parser;
 
-pub struct KML {
+pub struct KMLDocument {
     document: Node,
 }
 
-impl KML {
-    pub fn new(input: &str) -> Result<KML, String> {
+impl KMLDocument {
+    pub fn new(input: &str) -> Result<KMLDocument, String> {
         let document = parse(lex(input))?;
-        Ok(KML { document })
+        Ok(KMLDocument { document })
     }
 
     pub fn to_html(&self) -> String {
